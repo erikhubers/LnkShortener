@@ -2,7 +2,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <Preference android:title="@string/run_setup"
                 android:summary="@string/setup_summary">
-        <intent android:action="de.hirtenstrasse.michael.lnkshortener.SetupActivity" />
+        <intent android:action="nl.one2one.lnkshortener.SetupActivity" />
     </Preference>
     <PreferenceCategory
         android:title="@string/server_settings">

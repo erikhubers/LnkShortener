@@ -1,4 +1,4 @@
-package de.hirtenstrasse.michael.lnkshortener;
+package nl.one2one.lnkshortener;
 
 // Copyright (C) 2017 Michael Achmann
 
@@ -19,27 +19,26 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.support.v7.widget.Toolbar;
+
 import java.net.CookieHandler;
 import java.net.CookieManager;
 
 import de.cketti.library.changelog.ChangeLog;
 
 public class MainActivity extends AppCompatActivity {
-    public final static String EXTRA_MESSAGE = "de.hirtenstrasse.michael.lnkshortener.MESSAGE";
-    public final static String ACTIVITY_MESSAGE = "de.hirtenstrasse.michael.lnkshortener.ACTIVITY";
+    public final static String EXTRA_MESSAGE = "nl.one2one.lnkshortener.MESSAGE";
+    public final static String ACTIVITY_MESSAGE = "nl.one2one.lnkshortener.ACTIVITY";
     String originalUrl;
     String errorMessage;
     private UrlManager urlmanager;
@@ -63,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         boolean firstStart = sharedPref.getBoolean("first_start", false);
 
         // Since false is Default we start the SetupActivity if firstStart = false
-        if(firstStart == false){
+        if (firstStart == false) {
             Intent setupIntent = new Intent(this, SetupActivity.class);
             startActivity(setupIntent);
             finish();
@@ -133,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
         originalUrl = originalUrl.trim();
 
         // If originalUrl is a valide URL it is passed on
-        if(urlmanager.validateURL(originalUrl)){
+        if (urlmanager.validateURL(originalUrl)) {
             originalUrl = UrlManager.guessUrl(originalUrl);
             intent.putExtra(EXTRA_MESSAGE, originalUrl);
             intent.putExtra(ACTIVITY_MESSAGE, true);
@@ -171,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_settings:
                 // Starts the SettingsActivity
-                Intent intent = new Intent(this,SettingsActivity.class);
+                Intent intent = new Intent(this, SettingsActivity.class);
                 startActivity(intent);
 
                 return true;
@@ -219,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // Opens the GitHub Repo in a Browser
-    public void onClickGitHub(View view){
+    public void onClickGitHub(View view) {
         String url = "https://github.com/michaelachmann/LnkShortener/";
         Intent intentGitHub = new Intent(Intent.ACTION_VIEW);
         intentGitHub.setData(Uri.parse(url));

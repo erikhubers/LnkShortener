@@ -1,8 +1,8 @@
-package de.hirtenstrasse.michael.lnkshortener;
+package nl.one2one.lnkshortener;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Example local unit test, which will execute on the development machine (host).

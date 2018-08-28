@@ -1,4 +1,4 @@
-package de.hirtenstrasse.michael.lnkshortener;
+package nl.one2one.lnkshortener;
 
 // Copyright (C) 2017 Michael Achmann
 

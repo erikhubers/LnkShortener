@@ -1,4 +1,4 @@
-package de.hirtenstrasse.michael.lnkshortener;
+package nl.one2one.lnkshortener;
 
 // Copyright (C) 2017 Michael Achmann
 
@@ -16,11 +16,10 @@ package de.hirtenstrasse.michael.lnkshortener;
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +27,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.ToggleButton;
-
 
 
 /**
@@ -55,7 +53,7 @@ public class SetupStep3LoginFragment extends Fragment {
 
         // First we define the variables for accessing the UI
 
-        final ToggleButton loginToggle =  (ToggleButton) myInflater.findViewById(R.id.loginToggleButton);
+        final ToggleButton loginToggle = (ToggleButton) myInflater.findViewById(R.id.loginToggleButton);
         final EditText emailInput = (EditText) myInflater.findViewById(R.id.emailEditText);
         final TextView emailLabel = (TextView) myInflater.findViewById(R.id.emailLabel);
         final Button resetPasswordButton = (Button) myInflater.findViewById(R.id.resetPasswordButton);
@@ -65,7 +63,7 @@ public class SetupStep3LoginFragment extends Fragment {
         // Now we add the ClickListener on the toggle button
         loginToggle.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
 
                 if (!loginToggle.isChecked()) {
                     // Default state: Login mask, E-Mail field hidden, Reset Password field shown,
@@ -76,7 +74,6 @@ public class SetupStep3LoginFragment extends Fragment {
                     resetPasswordButton.setVisibility(View.VISIBLE);
                     loginButton.setText(getString(R.string.setup_login));
                     titleText.setText(getString(R.string.setup_login_title));
-
 
 
                 } else {
@@ -111,7 +108,7 @@ public class SetupStep3LoginFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if(!usernameEdit.getText().toString().matches("") && !passwordEdit.getText().toString().matches("")){
+                if (!usernameEdit.getText().toString().matches("") && !passwordEdit.getText().toString().matches("")) {
                     loginButton.setEnabled(true);
                 } else {
                     loginButton.setEnabled(false);
@@ -135,7 +132,7 @@ public class SetupStep3LoginFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if(!usernameEdit.getText().toString().matches("") && !passwordEdit.getText().toString().matches("")){
+                if (!usernameEdit.getText().toString().matches("") && !passwordEdit.getText().toString().matches("")) {
                     loginButton.setEnabled(true);
                 } else {
                     loginButton.setEnabled(false);
@@ -150,10 +147,7 @@ public class SetupStep3LoginFragment extends Fragment {
         });
 
 
-
         return myInflater;
-
-
 
 
     }

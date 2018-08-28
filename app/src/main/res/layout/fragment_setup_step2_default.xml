@@ -1,11 +1,10 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/SetupPrimary"
     android:padding="15dp"
-    tools:context="de.hirtenstrasse.michael.lnkshortener.SetupStep1Fragment">
+    tools:context="nl.one2one.lnkshortener.nl.one2one.lnkshortener.SetupStep1Fragment">
 
     <ScrollView
         android:layout_width="match_parent"

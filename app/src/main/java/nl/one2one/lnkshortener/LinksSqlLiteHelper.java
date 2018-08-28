@@ -1,4 +1,4 @@
-package de.hirtenstrasse.michael.lnkshortener;
+package nl.one2one.lnkshortener;
 
 // Copyright (C) 2017 Michael Achmann
 
@@ -32,11 +32,11 @@ public class LinksSqlLiteHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     private static final String DATABASE_CREATE = "create table "
-                                            + TABLE_LINKS + "( " + COLUMN_ID
-                                            + "integer primary key autoincrement, "
-                                            + COLUMN_LONG_LINK + " text no null "
-                                            + COLUMN_SHORT_LINK + " text not null "
-                                            + COLUMN_ADDED + " NOT NULL DEFAULT CURRENT_TIMESTAMP);";
+            + TABLE_LINKS + "( " + COLUMN_ID
+            + "integer primary key autoincrement, "
+            + COLUMN_LONG_LINK + " text no null "
+            + COLUMN_SHORT_LINK + " text not null "
+            + COLUMN_ADDED + " NOT NULL DEFAULT CURRENT_TIMESTAMP);";
 
     public LinksSqlLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

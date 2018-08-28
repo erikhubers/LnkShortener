@@ -1,4 +1,4 @@
-package de.hirtenstrasse.michael.lnkshortener;
+package nl.one2one.lnkshortener;
 
 // Copyright (C) 2017 Michael Achmann
 
@@ -20,10 +20,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
@@ -31,16 +30,11 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
-import com.android.volley.NetworkError;
 import com.android.volley.NoConnectionError;
 import com.android.volley.Response;
 import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 
 public class SetupActivity extends AppCompatActivity {
 
@@ -49,10 +43,9 @@ public class SetupActivity extends AppCompatActivity {
     private UrlManager urlmanager;
     Context context;
 
-    public Response.Listener<String> signupListener = new Response.Listener<String>()
-    {
+    public Response.Listener<String> signupListener = new Response.Listener<String>() {
         @Override
-        public void onResponse(String response){
+        public void onResponse(String response) {
             // Now everything should be fine, new User should be set-up.
             // Next we extract the API-Key before we can test it.
             // The API-Key is extracted by logging the user into the /admin site of serverUrl
@@ -62,12 +55,12 @@ public class SetupActivity extends AppCompatActivity {
             updateLoadingStatus(33);
 
             updateLoadingText(getString(R.string.setup_extracting_api_key));
-            helper.queryNewApiKey(getAPIListener,getAPIErrorListener);
+            helper.queryNewApiKey(getAPIListener, getAPIErrorListener);
 
         }
     };
 
-    public Response.ErrorListener signupErrorListener = new Response.ErrorListener(){
+    public Response.ErrorListener signupErrorListener = new Response.ErrorListener() {
 
         @Override
         public void onErrorResponse(VolleyError error) {
@@ -82,27 +75,26 @@ public class SetupActivity extends AppCompatActivity {
                 }
 
             } else {
-                    // Is thrown if there's no network connection or server is down
-                    Toast.makeText(context, getString(R.string.error_network),
-                            Toast.LENGTH_LONG).show();
-                    // We return to the last fragment
-                    if (getFragmentManager().getBackStackEntryCount() != 0) {
-                        getFragmentManager().popBackStack();
-                    }
+                // Is thrown if there's no network connection or server is down
+                Toast.makeText(context, getString(R.string.error_network),
+                        Toast.LENGTH_LONG).show();
+                // We return to the last fragment
+                if (getFragmentManager().getBackStackEntryCount() != 0) {
+                    getFragmentManager().popBackStack();
+                }
             }
         }
     };
 
 
-    public Response.Listener<String> testAPIListener = new Response.Listener<String>()
-    {
+    public Response.Listener<String> testAPIListener = new Response.Listener<String>() {
         @Override
-        public void onResponse(String response){
+        public void onResponse(String response) {
 
             // Here we check the response to see whether its google.com. If it is true we can assume that
             // Everything is working alright.
 
-            if(response.matches("https://google.com")){
+            if (response.matches("https://google.com")) {
                 // It matches soo:
 
                 // Everything done, so status = 100
@@ -116,13 +108,13 @@ public class SetupActivity extends AppCompatActivity {
                 // and display success message
                 enableFinishButton();
 
-                if(helper.getType()==0) {
+                if (helper.getType() == 0) {
                     // We're dealing with an anonymous account.
                     updateLoadingText(getString(R.string.setup_signup_done));
-                } else if(helper.getType()==1) {
+                } else if (helper.getType() == 1) {
                     // We're dealing with a 1n.pm user account
                     updateLoadingText(getString(R.string.setup_useraccount_successfull, helper.getUsername()));
-                } else if(helper.getType()==2){
+                } else if (helper.getType() == 2) {
                     // We're dealing with a custom server
                     updateLoadingText(getString(R.string.setup_custom_successfull, helper.getServerURL()));
                 }
@@ -138,11 +130,10 @@ public class SetupActivity extends AppCompatActivity {
             }
 
 
-
         }
     };
 
-    public Response.ErrorListener testAPIErrorListener = new Response.ErrorListener(){
+    public Response.ErrorListener testAPIErrorListener = new Response.ErrorListener() {
 
         @Override
         public void onErrorResponse(VolleyError error) {
@@ -164,32 +155,30 @@ public class SetupActivity extends AppCompatActivity {
                 if (getFragmentManager().getBackStackEntryCount() != 0) {
                     getFragmentManager().popBackStack();
                 }
-            }
-                else if (error instanceof ServerError) {
-                    // Is thrown if 404 or server down
-                    Toast.makeText(context, getString(R.string.error_server),
-                            Toast.LENGTH_LONG).show();
-                    // We return to the last fragment
-                    if (getFragmentManager().getBackStackEntryCount() != 0) {
-                        getFragmentManager().popBackStack();
-                    }
-                } else {
-                    // Some other problem.
-                    Toast.makeText(context, getString(R.string.error_network),
-                            Toast.LENGTH_LONG).show();
-                    // We return to the last fragment
-                    if (getFragmentManager().getBackStackEntryCount() != 0) {
-                        getFragmentManager().popBackStack();
-                    }
-
+            } else if (error instanceof ServerError) {
+                // Is thrown if 404 or server down
+                Toast.makeText(context, getString(R.string.error_server),
+                        Toast.LENGTH_LONG).show();
+                // We return to the last fragment
+                if (getFragmentManager().getBackStackEntryCount() != 0) {
+                    getFragmentManager().popBackStack();
                 }
+            } else {
+                // Some other problem.
+                Toast.makeText(context, getString(R.string.error_network),
+                        Toast.LENGTH_LONG).show();
+                // We return to the last fragment
+                if (getFragmentManager().getBackStackEntryCount() != 0) {
+                    getFragmentManager().popBackStack();
+                }
+
             }
+        }
     };
 
-    public Response.Listener<String> getAPIListener = new Response.Listener<String>()
-    {
+    public Response.Listener<String> getAPIListener = new Response.Listener<String>() {
         @Override
-        public void onResponse(String response){
+        public void onResponse(String response) {
 
             // First the var apiKey is initialized - it always need to be null in the first place
             String apiKey = null;
@@ -199,7 +188,7 @@ public class SetupActivity extends AppCompatActivity {
 
 
             apiKey = helper.renderApiKey(response);
-            if(apiKey==null){
+            if (apiKey == null) {
                 // The reason for that is probably that the user isn't API-Enabled or Login failed.
                 helper.setApiKey(null);
                 Toast.makeText(context, getString(R.string.error_login_failed),
@@ -234,47 +223,46 @@ public class SetupActivity extends AppCompatActivity {
         }
     };
 
-    public Response.ErrorListener getAPIErrorListener = new Response.ErrorListener(){
+    public Response.ErrorListener getAPIErrorListener = new Response.ErrorListener() {
 
-            @Override
-            public void onErrorResponse(VolleyError error) {
+        @Override
+        public void onErrorResponse(VolleyError error) {
 
-                if (error instanceof TimeoutError || error instanceof NoConnectionError) {
-                    // Is thrown if there's no network connection or server is down
-                    Toast.makeText(context, getString(R.string.error_network_timeout),
-                            Toast.LENGTH_LONG).show();
-                    // We return to the last fragment
-                    if (getFragmentManager().getBackStackEntryCount() != 0) {
-                        getFragmentManager().popBackStack();
-                    }
-
-                } else if (error instanceof AuthFailureError) {
-                    // Is thrown if the API-Key is wrong
-                    Toast.makeText(context, getString(R.string.error_apikey),
-                            Toast.LENGTH_LONG).show();
-                    // We return to the last fragment
-                    if (getFragmentManager().getBackStackEntryCount() != 0) {
-                        getFragmentManager().popBackStack();
-                    }
+            if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                // Is thrown if there's no network connection or server is down
+                Toast.makeText(context, getString(R.string.error_network_timeout),
+                        Toast.LENGTH_LONG).show();
+                // We return to the last fragment
+                if (getFragmentManager().getBackStackEntryCount() != 0) {
+                    getFragmentManager().popBackStack();
                 }
-                else if (error instanceof ServerError) {
-                    // Is thrown if 404 or server down
-                    Toast.makeText(context, getString(R.string.error_server),
-                            Toast.LENGTH_LONG).show();
-                    // We return to the last fragment
-                    if (getFragmentManager().getBackStackEntryCount() != 0) {
-                        getFragmentManager().popBackStack();
-                    }
-                } else {
-                    // Some other problem.
-                    Toast.makeText(context, getString(R.string.error_network),
-                            Toast.LENGTH_LONG).show();
-                    // We return to the last fragment
-                    if (getFragmentManager().getBackStackEntryCount() != 0) {
-                        getFragmentManager().popBackStack();
-                    }
 
+            } else if (error instanceof AuthFailureError) {
+                // Is thrown if the API-Key is wrong
+                Toast.makeText(context, getString(R.string.error_apikey),
+                        Toast.LENGTH_LONG).show();
+                // We return to the last fragment
+                if (getFragmentManager().getBackStackEntryCount() != 0) {
+                    getFragmentManager().popBackStack();
                 }
+            } else if (error instanceof ServerError) {
+                // Is thrown if 404 or server down
+                Toast.makeText(context, getString(R.string.error_server),
+                        Toast.LENGTH_LONG).show();
+                // We return to the last fragment
+                if (getFragmentManager().getBackStackEntryCount() != 0) {
+                    getFragmentManager().popBackStack();
+                }
+            } else {
+                // Some other problem.
+                Toast.makeText(context, getString(R.string.error_network),
+                        Toast.LENGTH_LONG).show();
+                // We return to the last fragment
+                if (getFragmentManager().getBackStackEntryCount() != 0) {
+                    getFragmentManager().popBackStack();
+                }
+
+            }
         }
     };
 
@@ -284,7 +272,7 @@ public class SetupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         context = getApplicationContext();
-        helper =  new SetupHelper(this);
+        helper = new SetupHelper(this);
         urlmanager = new UrlManager(this);
 
         // We introduces the SharedPreferences
@@ -306,7 +294,7 @@ public class SetupActivity extends AppCompatActivity {
         // We check the shared preferences for non-stock API-Settings
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         String apiKey = sharedPref.getString("api_key", null);
-        if(!apiKey.matches("8a4a2c54d582048c31aa85baaeb3f8") && !apiKey.matches("")){
+        if (!apiKey.matches("8a4a2c54d582048c31aa85baaeb3f8") && !apiKey.matches("")) {
             oldData = true;
         }
         bundle.putBoolean("oldData", oldData);
@@ -320,7 +308,7 @@ public class SetupActivity extends AppCompatActivity {
 
     }
 
-    public void nextClickSetup1(View view){
+    public void nextClickSetup1(View view) {
 
 
         RadioGroup firstSelection = (RadioGroup) findViewById(R.id.firstSelectionRadioGroup);
@@ -362,10 +350,9 @@ public class SetupActivity extends AppCompatActivity {
         }
 
 
-
     }
 
-    public void nextClickSetup2Default(View view){
+    public void nextClickSetup2Default(View view) {
 
         RadioGroup firstSelection = (RadioGroup) findViewById(R.id.npmRadioGroup);
 
@@ -409,10 +396,9 @@ public class SetupActivity extends AppCompatActivity {
         }
 
 
-
     }
 
-    public void openBrowserResetPassword(View view){
+    public void openBrowserResetPassword(View view) {
         // Opens the Reset Password page when Button is pressed.
         Uri webpage = Uri.parse("https://1n.pm/lost_password");
         Intent webIntent = new Intent(Intent.ACTION_VIEW);
@@ -421,7 +407,7 @@ public class SetupActivity extends AppCompatActivity {
 
     }
 
-    public void openBrowserSignup(View view){
+    public void openBrowserSignup(View view) {
         // Opens the Reset Password page when Button is pressed.
         Uri webpage = Uri.parse("https://1n.pm/signup");
         Intent webIntent = new Intent(Intent.ACTION_VIEW);
@@ -430,20 +416,20 @@ public class SetupActivity extends AppCompatActivity {
 
     }
 
-    public void backToSetup1Fragment(View view){
+    public void backToSetup1Fragment(View view) {
         // The best way of stepping back is to emulate pressing the back-button
         this.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_BACK));
         this.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_BACK));
 
     }
 
-    public void backToStep2DefaultFragment(View view){
+    public void backToStep2DefaultFragment(View view) {
         // The best way of stepping back is to emulate pressing the back-button
         this.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_BACK));
         this.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_BACK));
     }
 
-    public void signUpAnonymously(){
+    public void signUpAnonymously() {
         // First of all we create anonymous account data
         helper.createAnonymousAccountData();
         // Also the user decided for 1n.pm - hence we set the server String
@@ -453,7 +439,7 @@ public class SetupActivity extends AppCompatActivity {
 
     }
 
-    public void signInOnenpm(View view){
+    public void signInOnenpm(View view) {
         // We set the type to signin
         helper.setType(1);
         // We set the 1n.pm server url
@@ -488,7 +474,7 @@ public class SetupActivity extends AppCompatActivity {
     }
 
 
-    public void testCustomAPIKey(View view){
+    public void testCustomAPIKey(View view) {
 
         // Now we check the custom input. Therefore We
         // Swap to the loading fragment and save the values to helper
@@ -520,12 +506,12 @@ public class SetupActivity extends AppCompatActivity {
         // We set the type to custom
         helper.setType(2);
 
-        helper.testAPI(testAPIListener,testAPIErrorListener);
+        helper.testAPI(testAPIListener, testAPIErrorListener);
 
 
     }
 
-    public void saveAPIKey(int type){
+    public void saveAPIKey(int type) {
         // Finally we can save the APIKey and other information in sharedprefs. Since we only save
         // confidential information like the password with anonymous accounts we call specific
         // voids for each option
@@ -533,12 +519,12 @@ public class SetupActivity extends AppCompatActivity {
         editor.putString("api_key", helper.getApiKey());
 
         // We're dealing with a 1n.pm user, hence we save the the username
-        if(type < 2)
+        if (type < 2)
             editor.putString("username", helper.getUsername());
 
         // Only the anonymous random generated password is being stored
         // unsafely on the device
-        if(type==0)
+        if (type == 0)
             editor.putString("password", helper.getPassword());
 
         editor.putString("url", helper.getServerURL());
@@ -547,32 +533,32 @@ public class SetupActivity extends AppCompatActivity {
         editor.putBoolean("first_start", true);
 
         // We set the TOS-Version for future use.
-        editor.putInt("tos_version",1);
+        editor.putInt("tos_version", 1);
 
         editor.commit();
     }
 
-    public void updateLoadingText(String text){
+    public void updateLoadingText(String text) {
         SetupFinalStepLoading finalFragment = (SetupFinalStepLoading) getFragmentManager().findFragmentById(R.id.fragment_container);
-        if(finalFragment != null){
+        if (finalFragment != null) {
             finalFragment.updateStatus(text);
         }
     }
 
-    public void updateLoadingStatus(int n){
+    public void updateLoadingStatus(int n) {
         SetupFinalStepLoading finalFragment = (SetupFinalStepLoading) getFragmentManager().findFragmentById(R.id.fragment_container);
-        if(finalFragment != null){
+        if (finalFragment != null) {
             finalFragment.updateStatusPercent(n);
         }
     }
 
-    public void enableFinishButton(){
+    public void enableFinishButton() {
         SetupFinalStepLoading finalFragment = (SetupFinalStepLoading) getFragmentManager().findFragmentById(R.id.fragment_container);
         finalFragment.enableFinishButton();
 
     }
 
-    public void finishButtonPressed(View view){
+    public void finishButtonPressed(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();

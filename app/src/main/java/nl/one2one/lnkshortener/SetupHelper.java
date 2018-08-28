@@ -1,4 +1,4 @@
-package de.hirtenstrasse.michael.lnkshortener;
+package nl.one2one.lnkshortener;
 
 // Copyright (C) 2017 Michael Achmann
 
@@ -17,20 +17,14 @@ package de.hirtenstrasse.michael.lnkshortener;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import android.provider.Settings;
-import android.util.Log;
 
 import com.android.volley.AuthFailureError;
-import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -63,7 +57,7 @@ public class SetupHelper {
     private static SharedPreferences sharedPref;
     private final RequestQueue queue;
 
-    public SetupHelper(Context context){
+    public SetupHelper(Context context) {
         this.context = context;
         username = "";
         password = "";
@@ -73,7 +67,7 @@ public class SetupHelper {
         queue = Volley.newRequestQueue(this.context);
     }
 
-    public void setData(String serverURL, String username){
+    public void setData(String serverURL, String username) {
         this.serverURL = serverURL;
         this.username = username;
     }
@@ -82,31 +76,31 @@ public class SetupHelper {
         return this.type;
     }
 
-    public String getUsername(){
+    public String getUsername() {
         return this.username;
     }
 
-    public String getPassword(){
+    public String getPassword() {
         return this.password;
     }
 
-    public String getEmail(){
+    public String getEmail() {
         return this.email;
     }
 
-    public String getServerURL(){
+    public String getServerURL() {
         return this.serverURL;
     }
 
-    public String getApiKey(){
+    public String getApiKey() {
         return this.apiKey;
     }
 
-    public void setApiKey(String apiKey){
+    public void setApiKey(String apiKey) {
         this.apiKey = apiKey;
     }
 
-    public void setServerURL(String serverURL){
+    public void setServerURL(String serverURL) {
         this.serverURL = serverURL;
     }
 
@@ -114,32 +108,32 @@ public class SetupHelper {
         this.type = type;
     }
 
-    public void setUsername(String username){
+    public void setUsername(String username) {
         this.username = username;
     }
-    public void setPassword(String password){
+
+    public void setPassword(String password) {
         this.password = password;
     }
 
-    public void createAnonymousAccountData()
-    {
+    public void createAnonymousAccountData() {
         String locale = Locale.getDefault().getCountry();
         locale = locale.toLowerCase();
 
         String lanloc = Locale.getDefault().toLanguageTag();
 
-        username = "android-"+android_id+"-"+lanloc;
+        username = "android-" + android_id + "-" + lanloc;
         password = randomPassword();
-        email = android_id+"@android.com";
+        email = android_id + "@android.com";
 
         type = 0;
     }
 
-    public void signUp(final Response.Listener<String> listenerResponse, final Response.ErrorListener listenerError){
+    public void signUp(final Response.Listener<String> listenerResponse, final Response.ErrorListener listenerError) {
 
         // Assembles the URL and starts the API-Request
         final String url;
-        url = serverURL+"/signup";
+        url = serverURL + "/signup";
 
         // Actual Request to the API
         StringRequest getRequest = new StringRequest(Request.Method.GET, url,
@@ -165,16 +159,17 @@ public class SetupHelper {
 
                                 return params;
                             }
+
                             @Override
                             public Map<String, String> getHeaders() throws AuthFailureError {
                                 Map<String, String> params = new HashMap<String, String>();
                                 params.put("User-Agent", "LnkShortener App");
                                 return params;
                             }
-                        } ;
+                        };
                         queue.add(stringRequest);
                     }
-                },listenerError) {
+                }, listenerError) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
@@ -184,12 +179,11 @@ public class SetupHelper {
         };
 
 
-
         // Access the RequestQueue through your singleton class.
         queue.add(getRequest);
     }
 
-    public void queryNewApiKey(final Response.Listener<String> listenerResponse, final Response.ErrorListener listenerError){
+    public void queryNewApiKey(final Response.Listener<String> listenerResponse, final Response.ErrorListener listenerError) {
 
         // First of all we will need to login with the account info from SharedPreferences
 
@@ -201,7 +195,7 @@ public class SetupHelper {
 
         // Assembles the URL and starts the API-Request
         final String url;
-        url = serverURL+"/login";
+        url = serverURL + "/login";
 
         // Actual Request to the API
         StringRequest getRequest = new StringRequest(Request.Method.GET, url,
@@ -213,7 +207,7 @@ public class SetupHelper {
                         token = renderSignupPage(response);
 
                         // Network request for the Loginpage
-                        String url = serverURL+"/login";
+                        String url = serverURL + "/login";
                         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                                 new Response.Listener<String>() {
                                     @Override
@@ -221,7 +215,7 @@ public class SetupHelper {
 
                                         // Now, if we're logged in we're ready for the last request
                                         // which finally obtains an API-Key
-                                        String url = serverURL+"/admin";
+                                        String url = serverURL + "/admin";
                                         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                                                 listenerResponse, listenerError) {
                                             @Override
@@ -246,8 +240,8 @@ public class SetupHelper {
                                 return params;
                             }
 
-                                @Override
-                                public Map<String, String> getHeaders() throws AuthFailureError {
+                            @Override
+                            public Map<String, String> getHeaders() throws AuthFailureError {
                                 Map<String, String> params = new HashMap<String, String>();
                                 params.put("User-Agent", "LnkShortener App");
                                 return params;
@@ -266,25 +260,24 @@ public class SetupHelper {
         };
 
 
-
         // Access the RequestQueue through your singleton class.
         queue.add(getRequest);
 
     }
 
-    private String randomPassword(){
+    private String randomPassword() {
         Random generator = new Random();
         StringBuilder randomStringBuilder = new StringBuilder();
         int length = 32;
         char tempChar;
-        for (int i = 0; i < length; i++){
+        for (int i = 0; i < length; i++) {
             tempChar = (char) (generator.nextInt(96) + 32);
             randomStringBuilder.append(tempChar);
         }
         return randomStringBuilder.toString();
     }
 
-    private Map<String, String> retrieveAccountInfo(){
+    private Map<String, String> retrieveAccountInfo() {
 
         Map<String, String> accountInfo = new HashMap<String, String>();
 
@@ -296,7 +289,7 @@ public class SetupHelper {
 
     }
 
-    private String renderSignupPage(String html){
+    private String renderSignupPage(String html) {
 
         String csrf_token = "";
 
@@ -308,7 +301,7 @@ public class SetupHelper {
         return csrf_token;
     }
 
-    public String renderApiKey(String html){
+    public String renderApiKey(String html) {
         String api_key = null;
 
         Document doc = Jsoup.parse(html);
@@ -316,25 +309,25 @@ public class SetupHelper {
 
         try {
             api_key = apiField.attr("value");
-        } catch (NullPointerException e){
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
         return api_key;
 
     }
 
-    private void saveApiKey(String api_key){
+    private void saveApiKey(String api_key) {
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("api_key", api_key);
         editor.commit();
     }
 
-    public void testAPI(final Response.Listener<String> responseListener, final Response.ErrorListener errorListener){
+    public void testAPI(final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
 
         String testUrl = "https://google.com";
 
         // Assembles the URL and starts the API-Request
-        String url = serverURL+"/api/v2/action/shorten?key="+apiKey+"&url=" + testUrl;
+        String url = serverURL + "/api/v2/action/shorten?key=" + apiKey + "&url=" + testUrl;
         // Actual Request to the API
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
@@ -360,7 +353,7 @@ public class SetupHelper {
                             e.printStackTrace();
                         }
 
-                        String reverseUrl = serverURL+"/api/v2/action/lookup?key="+apiKey+"&url_ending="+encodedEnding;
+                        String reverseUrl = serverURL + "/api/v2/action/lookup?key=" + apiKey + "&url_ending=" + encodedEnding;
                         // Actual Request to the API
                         StringRequest stringRequest = new StringRequest(Request.Method.GET, reverseUrl,
                                 responseListener, errorListener
@@ -369,15 +362,11 @@ public class SetupHelper {
                         queue.add(stringRequest);
 
                     }
-                },errorListener);
+                }, errorListener);
 
         queue.add(stringRequest);
 
     }
-
-
-
-
 
 
 }

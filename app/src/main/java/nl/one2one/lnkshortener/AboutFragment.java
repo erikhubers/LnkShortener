@@ -1,23 +1,22 @@
-package de.hirtenstrasse.michael.lnkshortener;
+package nl.one2one.lnkshortener;
 
-import android.content.Context;
-import android.net.Uri;
-import android.os.Bundle;
 import android.app.Fragment;
+import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 
-public class LinkHistoryFragment extends Fragment {
+public class AboutFragment extends Fragment {
 
 
-    public LinkHistoryFragment() {
+    public AboutFragment() {
         // Required empty public constructor
     }
 
-    public static LinkHistoryFragment newInstance() {
-        LinkHistoryFragment fragment = new LinkHistoryFragment();
+    public static AboutFragment newInstance() {
+        AboutFragment fragment = new AboutFragment();
 
         return fragment;
     }
@@ -31,7 +30,7 @@ public class LinkHistoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_link_history, container, false);
+        return inflater.inflate(R.layout.fragment_about, container, false);
     }
 
 

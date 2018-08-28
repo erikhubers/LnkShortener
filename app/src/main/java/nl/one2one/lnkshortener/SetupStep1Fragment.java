@@ -1,4 +1,4 @@
-package de.hirtenstrasse.michael.lnkshortener;
+package nl.one2one.lnkshortener;
 
 // Copyright (C) 2017 Michael Achmann
 
@@ -15,10 +15,8 @@ package de.hirtenstrasse.michael.lnkshortener;
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.app.Fragment;
-import android.preference.PreferenceManager;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,8 +25,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 /*
-** First Step of the Setup Assitant. Shows three options: Use 1n.pm, use custom server or
-*  keep settings (if != standard of older versions)
+ ** First Step of the Setup Assitant. Shows three options: Use 1n.pm, use custom server or
+ *  keep settings (if != standard of older versions)
  */
 public class SetupStep1Fragment extends Fragment {
 
@@ -51,7 +49,7 @@ public class SetupStep1Fragment extends Fragment {
 
         RadioButton keepRadioButton = (RadioButton) myInflater.findViewById(R.id.keepRadio);
 
-        if(getArguments().getBoolean("oldData")){
+        if (getArguments().getBoolean("oldData")) {
             keepRadioButton.setEnabled(true);
         }
 
@@ -59,11 +57,10 @@ public class SetupStep1Fragment extends Fragment {
 
         RadioGroup radioGroup = (RadioGroup) myInflater.findViewById(R.id.firstSelectionRadioGroup);
 
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
-        {
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if(checkedId == R.id.keepRadio){
+                if (checkedId == R.id.keepRadio) {
                     next.setText(getString(R.string.setup_finish));
                 } else {
                     next.setText(getString(R.string.setup_next));

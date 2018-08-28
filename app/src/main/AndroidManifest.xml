@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="de.hirtenstrasse.michael.lnkshortener">
+    package="nl.one2one.lnkshortener">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="nl.one2one.lnkshortener.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,13 +20,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DisplayShortenedUrlActivity"
+            android:name="nl.one2one.lnkshortener.DisplayShortenedUrlActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/activity_display_url"
-            android:parentActivityName=".DisplayShortenedUrlActivity">
+            android:parentActivityName="nl.one2one.lnkshortener.DisplayShortenedUrlActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".DisplayShortenedUrlActivity" />
+                android:value="nl.one2one.lnkshortener.DisplayShortenedUrlActivity" />
 
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
@@ -37,19 +37,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SettingsActivity"
+            android:name="nl.one2one.lnkshortener.SettingsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/activity_settings"
-            android:parentActivityName=".DisplayShortenedUrlActivity">
+            android:parentActivityName="nl.one2one.lnkshortener.DisplayShortenedUrlActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".DisplayShortenedUrlActivity" />
+                android:value="nl.one2one.lnkshortener.DisplayShortenedUrlActivity" />
         </activity>
-        <activity android:name=".SetupActivity"
+        <activity
+            android:name="nl.one2one.lnkshortener.SetupActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="Setup">
             <intent-filter>
-                <action android:name="de.hirtenstrasse.michael.lnkshortener.SetupActivity" />
+                <action android:name="nl.one2one.lnkshortener.SetupActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

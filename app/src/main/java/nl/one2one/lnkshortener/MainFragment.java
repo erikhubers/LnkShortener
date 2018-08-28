@@ -1,4 +1,4 @@
-package de.hirtenstrasse.michael.lnkshortener;
+package nl.one2one.lnkshortener;
 
 // Copyright (C) 2017 Michael Achmann
 
@@ -15,8 +15,8 @@ package de.hirtenstrasse.michael.lnkshortener;
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +33,7 @@ public class MainFragment extends Fragment {
         // MainFragment is the Start screen
 
         // Since might want to alter some values in the layout we need the Inflater as a variable
-        View myInflater =  inflater.inflate(R.layout.fragment_main, container, false);
+        View myInflater = inflater.inflate(R.layout.fragment_main, container, false);
 
         // Adding the Github Buttons
         WebView webview = (WebView) myInflater.findViewById(R.id.webViewGithub);
@@ -46,17 +46,17 @@ public class MainFragment extends Fragment {
 
         // If errors have been passed to the Activity they can be injected into the Fragment at this
         // position. That's why we first check for errors and thereafter alter the Labels in the layout
-            if(getArguments().getBoolean("error")){
+        if (getArguments().getBoolean("error")) {
 
-                EditText urlInput = (EditText) myInflater.findViewById(R.id.urlInput);
-                urlInput.setText(getArguments().getString("originalUrl"));
+            EditText urlInput = (EditText) myInflater.findViewById(R.id.urlInput);
+            urlInput.setText(getArguments().getString("originalUrl"));
 
-                TextView textViewError = (TextView) myInflater.findViewById(R.id.textViewError);
-                ImageView imageViewError = (ImageView) myInflater.findViewById(R.id.imageViewError);
+            TextView textViewError = (TextView) myInflater.findViewById(R.id.textViewError);
+            ImageView imageViewError = (ImageView) myInflater.findViewById(R.id.imageViewError);
 
-                textViewError.setText(getArguments().getString("errorMessage"));
-                textViewError.setVisibility(View.VISIBLE);
-                imageViewError.setVisibility(View.VISIBLE);
+            textViewError.setText(getArguments().getString("errorMessage"));
+            textViewError.setVisibility(View.VISIBLE);
+            imageViewError.setVisibility(View.VISIBLE);
         }
 
         // Inflate the layout for this fragment

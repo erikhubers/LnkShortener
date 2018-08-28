@@ -1,4 +1,4 @@
-package de.hirtenstrasse.michael.lnkshortener;
+package nl.one2one.lnkshortener;
 
 // Copyright (C) 2017 Michael Achmann
 
@@ -16,9 +16,9 @@ package de.hirtenstrasse.michael.lnkshortener;
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import android.app.FragmentTransaction;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 public class SettingsActivity extends AppCompatActivity {

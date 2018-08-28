@@ -1,4 +1,4 @@
-package de.hirtenstrasse.michael.lnkshortener;
+package nl.one2one.lnkshortener;
 
 // Copyright (C) 2017 Michael Achmann
 
@@ -15,8 +15,8 @@ package de.hirtenstrasse.michael.lnkshortener;
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -61,7 +61,7 @@ public class SetupStep2CustomFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if(!urlEditText.getText().toString().matches("") && !apiEditText.getText().toString().matches("")){
+                if (!urlEditText.getText().toString().matches("") && !apiEditText.getText().toString().matches("")) {
                     checkButton.setEnabled(true);
                 } else {
                     checkButton.setEnabled(false);
@@ -71,8 +71,8 @@ public class SetupStep2CustomFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(!urlEditText.getText().toString().isEmpty()){
-                    if(!UrlManager.validateURL(urlEditText.getText().toString())){
+                if (!urlEditText.getText().toString().isEmpty()) {
+                    if (!UrlManager.validateURL(urlEditText.getText().toString())) {
                         urlEditText.setError("Valid URL required");
                         checkButton.setEnabled(false);
                     }
@@ -89,7 +89,7 @@ public class SetupStep2CustomFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if(!urlEditText.getText().toString().matches("") && !apiEditText.getText().toString().matches("")){
+                if (!urlEditText.getText().toString().matches("") && !apiEditText.getText().toString().matches("")) {
                     checkButton.setEnabled(true);
                 } else {
                     checkButton.setEnabled(false);
@@ -100,8 +100,8 @@ public class SetupStep2CustomFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(!urlEditText.getText().toString().isEmpty()){
-                    if(!UrlManager.validateURL(urlEditText.getText().toString())){
+                if (!urlEditText.getText().toString().isEmpty()) {
+                    if (!UrlManager.validateURL(urlEditText.getText().toString())) {
                         urlEditText.setError("Valid URL required");
                         checkButton.setEnabled(false);
                     }

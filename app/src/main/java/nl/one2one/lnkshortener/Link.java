@@ -1,4 +1,4 @@
-package de.hirtenstrasse.michael.lnkshortener;
+package nl.one2one.lnkshortener;
 
 // Copyright (C) 2017 Michael Achmann
 
@@ -19,35 +19,35 @@ public class Link {
     private long id, added;
     private String originalLink, shortLink;
 
-    public long getId(){
+    public long getId() {
         return id;
     }
 
-    public void setId(long id){
+    public void setId(long id) {
         this.id = id;
     }
 
-    public long getAdded(){
+    public long getAdded() {
         return added;
     }
 
-    public void setAdded(long added){
+    public void setAdded(long added) {
         this.added = added;
     }
 
-    public String getLongLink(){
+    public String getLongLink() {
         return originalLink;
     }
 
-    public void setLongLink(String originalLink){
+    public void setLongLink(String originalLink) {
         this.originalLink = originalLink;
     }
 
-    public String getShortLink(){
+    public String getShortLink() {
         return shortLink;
     }
 
-    public void setShortLink(String shortLink){
+    public void setShortLink(String shortLink) {
         this.shortLink = shortLink;
     }
 

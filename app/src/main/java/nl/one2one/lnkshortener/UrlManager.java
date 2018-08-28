@@ -1,9 +1,8 @@
-package de.hirtenstrasse.michael.lnkshortener;
+package nl.one2one.lnkshortener;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-
 import android.util.Patterns;
 import android.webkit.URLUtil;
 
@@ -40,7 +39,7 @@ public class UrlManager {
     private static Context context;
     private static SharedPreferences sharedPref;
 
-    public UrlManager(Context context){
+    public UrlManager(Context context) {
         this.context = context;
         // Receive the apiKey and Url from the shared preferences
         PreferenceManager.setDefaultValues(context, R.xml.main_settings, false);
@@ -48,13 +47,13 @@ public class UrlManager {
     }
 
     // URL Validation
-    public static boolean validateURL(String url){
+    public static boolean validateURL(String url) {
 
         return Patterns.WEB_URL.matcher(url).matches();
     }
 
     // If the URL is valid this function adds e.g. http:// (the protocol) to the URL, if missing
-    public static String guessUrl(String url){
+    public static String guessUrl(String url) {
         String returnurl = URLUtil.guessUrl(url);
 
         return returnurl;
@@ -69,14 +68,14 @@ public class UrlManager {
      *
      */
 
-    public static int getURLType(String url){
+    public static int getURLType(String url) {
         int type = 0;
 
-        if(!isOnApiHost(url)){
+        if (!isOnApiHost(url)) {
             return 0;
-        } else if(isShortenedURL(url)){
+        } else if (isShortenedURL(url)) {
             return 1;
-        } else if (isSystemURL(url)){
+        } else if (isSystemURL(url)) {
             return 2;
         }
 
@@ -87,11 +86,11 @@ public class UrlManager {
      * Checks whether the link is shortened by API-Service
      */
 
-    public static boolean isShortenedURL(String url){
+    public static boolean isShortenedURL(String url) {
 
-        if(!isOnApiHost(url)){
+        if (!isOnApiHost(url)) {
             return false;
-        } else if(!isSystemURL(url)){
+        } else if (!isSystemURL(url)) {
             return true;
         }
 
@@ -102,7 +101,7 @@ public class UrlManager {
      * Checks whether it is a System URL
      */
 
-    public static boolean isSystemURL(String url){
+    public static boolean isSystemURL(String url) {
 
         URL receivedUrl = null;
         String[] systemPaths = {"/about", "/signup", "/signin", "/lost_password", "/admin", "/setup", "/", "/api"};
@@ -113,9 +112,9 @@ public class UrlManager {
             e.printStackTrace();
         }
 
-        if(!isOnApiHost(url)){
+        if (!isOnApiHost(url)) {
             return false;
-        } else if(Arrays.asList(systemPaths).contains(receivedUrl.getPath())){
+        } else if (Arrays.asList(systemPaths).contains(receivedUrl.getPath())) {
 
             return true;
         }
@@ -127,7 +126,7 @@ public class UrlManager {
      * Checks whether the Link is from the API-Domain
      */
 
-    public static boolean isOnApiHost(String url){
+    public static boolean isOnApiHost(String url) {
         // Instantiate Variables
         URL receivedURL = null;
         URL apiURL = null;
@@ -141,11 +140,10 @@ public class UrlManager {
             e.printStackTrace();
         }
 
-        if(receivedURL.getHost().equals(apiURL.getHost())){
+        if (receivedURL.getHost().equals(apiURL.getHost())) {
             isOnApi = true;
 
         }
-
 
 
         return isOnApi;
@@ -155,14 +153,14 @@ public class UrlManager {
      * Finds URLs in any Text and returns them as a List
      */
 
-    public static List<String> findURLs(String url){
+    public static List<String> findURLs(String url) {
 
         List<String> urls = new ArrayList<String>();
         String regex = "((https?):((//)|(\\\\))+[\\w\\d:#@%/;$()~_?\\+-=\\\\\\.&]*)";
         Pattern pattern = Pattern.compile(regex);
         Matcher urlMatcher = pattern.matcher(url);
 
-        while(urlMatcher.find()){
+        while (urlMatcher.find()) {
             urls.add(url.substring(urlMatcher.start(0), urlMatcher.end(0)));
         }
 

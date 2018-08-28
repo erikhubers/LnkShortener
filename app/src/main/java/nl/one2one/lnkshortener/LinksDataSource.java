@@ -1,4 +1,4 @@
-package de.hirtenstrasse.michael.lnkshortener;
+package nl.one2one.lnkshortener;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -15,13 +15,13 @@ public class LinksDataSource {
     private SQLiteDatabase database;
     private LinksSqlLiteHelper dbHelper;
     private String[] allColumns = {LinksSqlLiteHelper.COLUMN_ID, LinksSqlLiteHelper.COLUMN_ADDED,
-                                LinksSqlLiteHelper.COLUMN_SHORT_LINK, LinksSqlLiteHelper.COLUMN_LONG_LINK};
+            LinksSqlLiteHelper.COLUMN_SHORT_LINK, LinksSqlLiteHelper.COLUMN_LONG_LINK};
 
-    public LinksDataSource(Context context){
+    public LinksDataSource(Context context) {
         dbHelper = new LinksSqlLiteHelper(context);
     }
 
-    public void open() throws SQLException{
+    public void open() throws SQLException {
         database = dbHelper.getWritableDatabase();
     }
 
@@ -29,7 +29,7 @@ public class LinksDataSource {
         dbHelper.close();
     }
 
-    public Link createLink(String longLink, String shortLink){
+    public Link createLink(String longLink, String shortLink) {
         ContentValues values = new ContentValues();
 
         values.put(LinksSqlLiteHelper.COLUMN_LONG_LINK, longLink);
@@ -46,6 +46,7 @@ public class LinksDataSource {
         return newLink;
 
     }
+
     public void deleteLink(Link link) {
         long id = link.getId();
         database.delete(LinksSqlLiteHelper.TABLE_LINKS, LinksSqlLiteHelper.COLUMN_ID
@@ -77,7 +78,6 @@ public class LinksDataSource {
         link.setAdded(cursor.getLong(3));
         return link;
     }
-
 
 
 }

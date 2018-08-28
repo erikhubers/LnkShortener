@@ -1,4 +1,4 @@
-package de.hirtenstrasse.michael.lnkshortener;
+package nl.one2one.lnkshortener;
 
 // Copyright (C) 2017 Michael Achmann
 
@@ -23,13 +23,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -46,6 +44,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import net.glxn.qrgen.android.QRCode;
+
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -56,16 +56,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import net.glxn.qrgen.android.QRCode;
-
-import org.w3c.dom.Text;
-
 
 public class DisplayShortenedUrlActivity extends AppCompatActivity {
     // Setting up the Strings which will be used in the Intents
-    public final static String EXTRA_MESSAGE = "de.hirtenstrasse.michael.lnkshortener.MESSAGE";
-    public final static String ERROR_MESSAGE = "de.hirtenstrasse.michael.lnkshortener.ERROR";
-    public final static String ERROR_BOOL = "de.hirtenstrasse.michael.lnkshortener.BERR";
+    public final static String EXTRA_MESSAGE = "nl.one2one.lnkshortener.MESSAGE";
+    public final static String ERROR_MESSAGE = "nl.one2one.lnkshortener.ERROR";
+    public final static String ERROR_BOOL = "nl.one2one.lnkshortener.BERR";
 
     // Setting up Strings which will be used class-wide
     String shortUrl, originalUrl, apiKey, apiUrl;
@@ -101,7 +97,7 @@ public class DisplayShortenedUrlActivity extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
 
         // Checks where the Data is coming from (MainActivity or Intent from foreign app)
-        if( intent.getBooleanExtra(MainActivity.ACTIVITY_MESSAGE,false)){
+        if (intent.getBooleanExtra(MainActivity.ACTIVITY_MESSAGE, false)) {
             // Received the Intent from MainActivity
             originalUrl = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
 
@@ -118,7 +114,7 @@ public class DisplayShortenedUrlActivity extends AppCompatActivity {
 
             // If there were links amongst the text we use the first one.
             // TODO For future Version we could include a dialog for choosing the link to shorten
-            if(intentUrls.size() > 0) {
+            if (intentUrls.size() > 0) {
                 originalUrl = intentUrls.get(0);
             } else {
                 // No URL was found, go on and show an error toast and immediatelly finish();
@@ -152,7 +148,7 @@ public class DisplayShortenedUrlActivity extends AppCompatActivity {
         // Since the standard API-Key was never set explicitly to the sharedPreferences
         // but more so add as standard in Settings we now set explicitly the old API-Key
         // if the call is made before the end of the grace period
-        if(apiKey.matches("") && !expired){
+        if (apiKey.matches("") && !expired) {
             apiKey = "8a4a2c54d582048c31aa85baaeb3f8";
         }
 
@@ -162,17 +158,17 @@ public class DisplayShortenedUrlActivity extends AppCompatActivity {
 
         // Since false is Default we display the messages and Button if firstStart = false (only if user uses
         // the old standard API-Key
-        if(firstStart == false && apiKey.matches("8a4a2c54d582048c31aa85baaeb3f8")){
+        if (firstStart == false && apiKey.matches("8a4a2c54d582048c31aa85baaeb3f8")) {
             setupButton.setVisibility(View.VISIBLE);
             setupSubtext.setVisibility(View.VISIBLE);
-            if(expired==false)
+            if (expired == false)
                 setupSubtext.setText(getString(R.string.you_need_to_run_setup_subline, expiryLocalized));
             else
                 setupSubtext.setText(getString(R.string.you_need_to_run_setup_subline_expired));
             setupTitle.setVisibility(View.VISIBLE);
         }
 
-        if(!apiKey.matches("8a4a2c54d582048c31aa85baaeb3f8") || expired == false)
+        if (!apiKey.matches("8a4a2c54d582048c31aa85baaeb3f8") || expired == false)
             checkURL();
 
     }
@@ -180,14 +176,14 @@ public class DisplayShortenedUrlActivity extends AppCompatActivity {
     /*
      * checkURL() determines what kind of URL we're dealing with. Either passes it on to shorten, expand or error
      */
-    private void checkURL(){
+    private void checkURL() {
         int urlType = urlmanager.getURLType(originalUrl);
 
-        if(urlType == 0){
+        if (urlType == 0) {
             shortenUrl();
-        } else if (urlType == 1){
+        } else if (urlType == 1) {
             expandUrl();
-        } else if (urlType == 2){
+        } else if (urlType == 2) {
             linkError(urlType);
         } else {
             linkError(-1);
@@ -195,11 +191,11 @@ public class DisplayShortenedUrlActivity extends AppCompatActivity {
 
     }
 
-    public void openSetup(View v)
-    {
+    public void openSetup(View v) {
         Intent setupIntent = new Intent(this, SetupActivity.class);
         startActivity(setupIntent);
     }
+
     private void linkError(int errorCode) {
 
         // This is called if some error happened
@@ -216,20 +212,20 @@ public class DisplayShortenedUrlActivity extends AppCompatActivity {
         intent.putExtra(ERROR_BOOL, true);
 
         // If we can determine the type of the error we add an Error message:
-        switch(errorCode){
+        switch (errorCode) {
             case 2:
-                toast = Toast.makeText(context,  getString(R.string.error_system_url), duration);
+                toast = Toast.makeText(context, getString(R.string.error_system_url), duration);
                 intent.putExtra(ERROR_MESSAGE, getString(R.string.error_system_url));
                 break;
             default:
-                toast = Toast.makeText(context,  getString(R.string.error_generic_url), duration);
+                toast = Toast.makeText(context, getString(R.string.error_generic_url), duration);
                 intent.putExtra(ERROR_MESSAGE, getString(R.string.error_generic_url));
         }
 
 
-        if(!foreignIntent) {
+        if (!foreignIntent) {
             // And start the MainActivity (if the Intent didn't come through a Share)
-            toast = Toast.makeText(context,  getString(R.string.error_toast), duration);
+            toast = Toast.makeText(context, getString(R.string.error_toast), duration);
             startActivity(intent);
         }
 
@@ -248,7 +244,7 @@ public class DisplayShortenedUrlActivity extends AppCompatActivity {
         // Here we set up the first vars
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_SHORT;
-        Toast toast = Toast.makeText(context,  getString(R.string.no_url), duration);
+        Toast toast = Toast.makeText(context, getString(R.string.no_url), duration);
 
         // We show the error toast
         toast.show();
@@ -264,7 +260,7 @@ public class DisplayShortenedUrlActivity extends AppCompatActivity {
      * TODO: Swap to JSON Version!
      * TODO: Add to custom class
      */
-    private void shortenUrl(){
+    private void shortenUrl() {
 
         // Instantiate Volley for Networking
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -280,7 +276,7 @@ public class DisplayShortenedUrlActivity extends AppCompatActivity {
         }
 
         // Assembles the URL and starts the API-Request
-        String url = apiUrl+"/api/v2/action/shorten?key="+apiKey+"&url=" + encodedOriginalUrl;
+        String url = apiUrl + "/api/v2/action/shorten?key=" + apiKey + "&url=" + encodedOriginalUrl;
         // Actual Request to the API
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
@@ -300,7 +296,7 @@ public class DisplayShortenedUrlActivity extends AppCompatActivity {
                 apiError(error);
             }
         }
-                );
+        );
 
         // For volley we need to add our request to the queue. The queue starts automatically
         // Do NOT add a queue.start(), it provokes errors.
@@ -312,7 +308,7 @@ public class DisplayShortenedUrlActivity extends AppCompatActivity {
      * TODO Swap to JSON
      *
      */
-    private void expandUrl(){
+    private void expandUrl() {
 
         // Changing the Title since we're not shortening the URL anymore
         ActionBar ab = getSupportActionBar();
@@ -345,7 +341,7 @@ public class DisplayShortenedUrlActivity extends AppCompatActivity {
 
 
         // Assembles the URL and starts the API-Request
-        String url = apiUrl+"/api/v2/action/lookup?key="+apiKey+"&url_ending="+encodedEnding;
+        String url = apiUrl + "/api/v2/action/lookup?key=" + apiKey + "&url_ending=" + encodedEnding;
 
         // Actual Request to the API
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -376,7 +372,7 @@ public class DisplayShortenedUrlActivity extends AppCompatActivity {
     /*
      * Called once the API call has been finished. Turns the Buttons and shortened link visible.
      */
-    private void showShortenedUrl(){
+    private void showShortenedUrl() {
 
         // Setting up Variables for Layout
         final TextView viewShortenedUrl = (TextView) findViewById(R.id.textViewShortenedLink);
@@ -403,12 +399,12 @@ public class DisplayShortenedUrlActivity extends AppCompatActivity {
      * Handles the errors from the API call
      */
 
-    public void apiError(VolleyError error){
+    public void apiError(VolleyError error) {
         // This is called if some error happened
         // Here we set up the first vars
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_SHORT;
-        Toast toast = Toast.makeText(context,  getString(R.string.error_toast), duration);
+        Toast toast = Toast.makeText(context, getString(R.string.error_toast), duration);
 
         // Whatever happened we want to return to the start Activity. If possible with
         // some information about what went wrong. Therefore we can already set the Intent up
@@ -420,11 +416,11 @@ public class DisplayShortenedUrlActivity extends AppCompatActivity {
         // therefore the try-catch is needed. If there is a statusCode it can tell us a little
         // more about the kind of the error which then is passed on in form of a human readable
         // String to the MainActivity.
-        try{
+        try {
 
-            if(error.networkResponse.statusCode != 200) {
+            if (error.networkResponse.statusCode != 200) {
 
-                switch (error.networkResponse.statusCode){
+                switch (error.networkResponse.statusCode) {
                     case 400:
 
                         intent.putExtra(ERROR_MESSAGE, getString(R.string.error_valid_url));
@@ -457,10 +453,9 @@ public class DisplayShortenedUrlActivity extends AppCompatActivity {
                 }
 
 
-
             }
 
-        } catch (Exception e){
+        } catch (Exception e) {
             // If this happened we are hopefully yet debugging and will receive some information
             // about the kind of the error.
             e.printStackTrace();
@@ -483,11 +478,11 @@ public class DisplayShortenedUrlActivity extends AppCompatActivity {
      * Called from the interface. Shares the shortened / extended URL with any app
      */
     public void shareLink(View view) {
-            Intent sendIntent = new Intent();
-            sendIntent.setAction(Intent.ACTION_SEND);
-            sendIntent.putExtra(Intent.EXTRA_TEXT, shortUrl);
-            sendIntent.setType("text/plain");
-            startActivity(Intent.createChooser(sendIntent, getString(R.string.chooser_title)));
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, shortUrl);
+        sendIntent.setType("text/plain");
+        startActivity(Intent.createChooser(sendIntent, getString(R.string.chooser_title)));
 
     }
 
@@ -495,7 +490,7 @@ public class DisplayShortenedUrlActivity extends AppCompatActivity {
      * Shows a Dialog with a QR code for the URL
      * TODO Share and Copy functions for the QR Code. Dynamic Dialog / QR Code Size
      */
-    public void showQRCode(View view){
+    public void showQRCode(View view) {
 
         Dialog qrCodeDialog = new Dialog(this);
         qrCodeDialog.getWindow()
@@ -509,7 +504,7 @@ public class DisplayShortenedUrlActivity extends AppCompatActivity {
 
         // Generate QR-Code for ShortLink
         Bitmap qrCode = QRCode.from(shortUrl)
-                .withSize(800,800)
+                .withSize(800, 800)
                 .withColor(0xFF000000, 0x00000000)
                 .bitmap();
 
@@ -523,7 +518,7 @@ public class DisplayShortenedUrlActivity extends AppCompatActivity {
     /*
      * Copy shortened / extended Link to Clipboard
      */
-    public void copyLink(View view){
+    public void copyLink(View view) {
         ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData clip = ClipData.newPlainText("Short Link", shortUrl);
         clipboard.setPrimaryClip(clip);
@@ -539,7 +534,7 @@ public class DisplayShortenedUrlActivity extends AppCompatActivity {
     /*
      * Opens shortened / expanded Link in Browser
      */
-    public void openLink(View view){
+    public void openLink(View view) {
         Uri webpage = Uri.parse(shortUrl);
         Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
 

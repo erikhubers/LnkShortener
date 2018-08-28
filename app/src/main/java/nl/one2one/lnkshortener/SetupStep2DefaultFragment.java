@@ -1,4 +1,4 @@
-package de.hirtenstrasse.michael.lnkshortener;
+package nl.one2one.lnkshortener;
 
 // Copyright (C) 2017 Michael Achmann
 
@@ -15,8 +15,8 @@ package de.hirtenstrasse.michael.lnkshortener;
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,8 +26,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
-
-import java.util.zip.Inflater;
 
 
 /**
@@ -45,7 +43,7 @@ public class SetupStep2DefaultFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View myInflater =  inflater.inflate(R.layout.fragment_setup_step2_default, container, false);
+        View myInflater = inflater.inflate(R.layout.fragment_setup_step2_default, container, false);
 
 
         CheckBox tos = (CheckBox) myInflater.findViewById(R.id.tosCheckBox);
@@ -54,15 +52,15 @@ public class SetupStep2DefaultFragment extends Fragment {
 
         tos.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
-                                               @Override
-                                               public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
-                                                    if(isChecked) {
-                                                        next.setEnabled(true);
-                                                    } else {
-                                                        next.setEnabled(false);
-                                                    }
+                                           @Override
+                                           public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                               if (isChecked) {
+                                                   next.setEnabled(true);
+                                               } else {
+                                                   next.setEnabled(false);
                                                }
                                            }
+                                       }
         );
 
 
@@ -71,9 +69,9 @@ public class SetupStep2DefaultFragment extends Fragment {
         webview.getSettings().setJavaScriptEnabled(false);
         webview.setBackgroundColor(0x00000000);
         // It is saved in the assets
-        webview.setWebViewClient(new WebViewClient(){
+        webview.setWebViewClient(new WebViewClient() {
             @Override
-            public void onPageFinished(WebView view, String url){
+            public void onPageFinished(WebView view, String url) {
                 tosLoading.setVisibility(View.GONE);
             }
         });
