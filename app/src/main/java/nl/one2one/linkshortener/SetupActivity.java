@@ -1,4 +1,4 @@
-package nl.one2one.lnkshortener;
+package nl.one2one.linkshortener;
 
 // Copyright (C) 2017 Michael Achmann
 
@@ -112,7 +112,7 @@ public class SetupActivity extends AppCompatActivity {
                     // We're dealing with an anonymous account.
                     updateLoadingText(getString(R.string.setup_signup_done));
                 } else if (helper.getType() == 1) {
-                    // We're dealing with a 1n.pm user account
+                    // We're dealing with a 1t1.nl user account
                     updateLoadingText(getString(R.string.setup_useraccount_successfull, helper.getUsername()));
                 } else if (helper.getType() == 2) {
                     // We're dealing with a custom server
@@ -332,7 +332,7 @@ public class SetupActivity extends AppCompatActivity {
                 break;
 
             case R.id.defaultRadio:
-                // SetupStep2DefaultFragment is the fragment for the 1n.pm Setup
+                // SetupStep2DefaultFragment is the fragment for the 1t1.nl Setup
                 SetupStep2DefaultFragment npm = new SetupStep2DefaultFragment();
                 // Finally MainFragment is added to the main container
                 transaction.replace(R.id.fragment_container, npm);
@@ -400,7 +400,7 @@ public class SetupActivity extends AppCompatActivity {
 
     public void openBrowserResetPassword(View view) {
         // Opens the Reset Password page when Button is pressed.
-        Uri webpage = Uri.parse("https://1n.pm/lost_password");
+        Uri webpage = Uri.parse("https://1t1.nl/lost_password");
         Intent webIntent = new Intent(Intent.ACTION_VIEW);
         webIntent.setData(webpage);
         startActivity(webIntent);
@@ -409,7 +409,7 @@ public class SetupActivity extends AppCompatActivity {
 
     public void openBrowserSignup(View view) {
         // Opens the Reset Password page when Button is pressed.
-        Uri webpage = Uri.parse("https://1n.pm/signup");
+        Uri webpage = Uri.parse("https://1t1.nl/signup");
         Intent webIntent = new Intent(Intent.ACTION_VIEW);
         webIntent.setData(webpage);
         startActivity(webIntent);
@@ -432,8 +432,8 @@ public class SetupActivity extends AppCompatActivity {
     public void signUpAnonymously() {
         // First of all we create anonymous account data
         helper.createAnonymousAccountData();
-        // Also the user decided for 1n.pm - hence we set the server String
-        helper.setServerURL("https://1n.pm/");
+        // Also the user decided for 1t1.nl - hence we set the server String
+        helper.setServerURL("https://1t1.nl/");
         // Start of the async Volley request, which invokes the Listeners of this class
         helper.signUp(signupListener, signupErrorListener);
 
@@ -442,8 +442,8 @@ public class SetupActivity extends AppCompatActivity {
     public void signInOnenpm(View view) {
         // We set the type to signin
         helper.setType(1);
-        // We set the 1n.pm server url
-        helper.setServerURL("https://1n.pm/");
+        // We set the 1t1.nl server url
+        helper.setServerURL("https://1t1.nl/");
 
         EditText username = (EditText) this.findViewById(R.id.usernameEditText);
         EditText password = (EditText) this.findViewById(R.id.passwordEditText);
@@ -518,7 +518,7 @@ public class SetupActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("api_key", helper.getApiKey());
 
-        // We're dealing with a 1n.pm user, hence we save the the username
+        // We're dealing with a 1t1.nl user, hence we save the the username
         if (type < 2)
             editor.putString("username", helper.getUsername());
 

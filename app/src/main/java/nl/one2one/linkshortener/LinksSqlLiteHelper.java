@@ -1,4 +1,4 @@
-package nl.one2one.lnkshortener;
+package nl.one2one.linkshortener;
 
 // Copyright (C) 2017 Michael Achmann
 

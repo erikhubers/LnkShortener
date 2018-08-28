@@ -1,4 +1,4 @@
-package nl.one2one.lnkshortener;
+package nl.one2one.linkshortener;
 
 import android.content.ContentValues;
 import android.content.Context;

@@ -6,7 +6,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="nl.one2one.lnkshortener.nl.one2one.lnkshortener.MainFragment">
+    tools:context="nl.one2one.linkshortener.MainFragment">
 
 
     <android.support.v7.widget.Toolbar
@@ -85,7 +85,7 @@
                 android:scrollbarAlwaysDrawHorizontalTrack="false"
                 android:scrollbarAlwaysDrawVerticalTrack="false"
                 android:scrollbars="vertical"
-                android:text="1n.pm/"
+                android:text="1t1.nl/"
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimary"
                 android:textIsSelectable="true"

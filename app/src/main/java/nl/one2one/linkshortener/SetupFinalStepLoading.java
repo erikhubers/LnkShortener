@@ -1,4 +1,4 @@
-package nl.one2one.lnkshortener;
+package nl.one2one.linkshortener;
 
 // Copyright (C) 2017 Michael Achmann
 
@@ -52,12 +52,12 @@ public class SetupFinalStepLoading extends Fragment {
         View myInflater = inflater.inflate(R.layout.fragment_final_step_loading, container, false);
 
         //  Assign variables for use in voids
-        statusBar = (ProgressBar) myInflater.findViewById(R.id.statusBar);
-        statusSpinner = (ProgressBar) myInflater.findViewById(R.id.statusSpinner);
-        statusText = (TextView) myInflater.findViewById(R.id.statusText);
-        doneImage = (ImageView) myInflater.findViewById(R.id.doneIcon);
-        finishButton = (Button) myInflater.findViewById(R.id.finishButton);
-        statusLog = (TextView) myInflater.findViewById(R.id.statusLogEditText);
+        statusBar = myInflater.findViewById(R.id.statusBar);
+        statusSpinner = myInflater.findViewById(R.id.statusSpinner);
+        statusText = myInflater.findViewById(R.id.statusText);
+        doneImage = myInflater.findViewById(R.id.doneIcon);
+        finishButton = myInflater.findViewById(R.id.finishButton);
+        statusLog = myInflater.findViewById(R.id.statusLogEditText);
 
         // Step for the Status Log
         step = 1;

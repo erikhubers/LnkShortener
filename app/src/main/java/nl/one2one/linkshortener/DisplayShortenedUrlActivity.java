@@ -1,4 +1,4 @@
-package nl.one2one.lnkshortener;
+package nl.one2one.linkshortener;
 
 // Copyright (C) 2017 Michael Achmann
 
@@ -59,9 +59,9 @@ import java.util.List;
 
 public class DisplayShortenedUrlActivity extends AppCompatActivity {
     // Setting up the Strings which will be used in the Intents
-    public final static String EXTRA_MESSAGE = "nl.one2one.lnkshortener.MESSAGE";
-    public final static String ERROR_MESSAGE = "nl.one2one.lnkshortener.ERROR";
-    public final static String ERROR_BOOL = "nl.one2one.lnkshortener.BERR";
+    public final static String EXTRA_MESSAGE = "nl.one2one.linkshortener.MESSAGE";
+    public final static String ERROR_MESSAGE = "nl.one2one.linkshortener.ERROR";
+    public final static String ERROR_BOOL = "nl.one2one.linkshortener.BERR";
 
     // Setting up Strings which will be used class-wide
     String shortUrl, originalUrl, apiKey, apiUrl;

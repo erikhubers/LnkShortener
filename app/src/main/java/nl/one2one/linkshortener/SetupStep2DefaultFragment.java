@@ -1,4 +1,4 @@
-package nl.one2one.lnkshortener;
+package nl.one2one.linkshortener;
 
 // Copyright (C) 2017 Michael Achmann
 
@@ -29,7 +29,7 @@ import android.widget.TextView;
 
 
 /**
- * Step 2 in the Setup Assistant. Shows the options for the use of 1n.pm
+ * Step 2 in the Setup Assistant. Shows the options for the use of 1t1.nl
  */
 public class SetupStep2DefaultFragment extends Fragment {
 

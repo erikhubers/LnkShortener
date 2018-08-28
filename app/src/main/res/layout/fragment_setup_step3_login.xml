@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@color/SetupPrimary"
     android:padding="15dp"
-    tools:context="nl.one2one.lnkshortener.nl.one2one.lnkshortener.SetupStep1Fragment">
+    tools:context="nl.one2one.linkshortener.nl.one2one.linkshortener.SetupStep1Fragment">
 
 
     <ScrollView
@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:enabled="false"
-                android:hint="user@1n.pm"
+                android:hint="user@1t1.nl"
                 android:inputType="textEmailAddress"
                 android:visibility="gone" />
 

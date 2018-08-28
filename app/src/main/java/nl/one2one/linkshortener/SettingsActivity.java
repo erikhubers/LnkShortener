@@ -1,4 +1,4 @@
-package nl.one2one.lnkshortener;
+package nl.one2one.linkshortener;
 
 // Copyright (C) 2017 Michael Achmann
 
@@ -27,7 +27,7 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         // Setting up the Layout
 
-        // TODO: Add logic for bool use 1n.pm and for displaying username (v 1.1.2)
+        // TODO: Add logic for bool use 1t1.nl and for displaying username (v 1.1.2)
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);

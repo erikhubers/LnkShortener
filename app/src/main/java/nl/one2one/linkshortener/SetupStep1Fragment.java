@@ -1,4 +1,4 @@
-package nl.one2one.lnkshortener;
+package nl.one2one.linkshortener;
 
 // Copyright (C) 2017 Michael Achmann
 
@@ -25,7 +25,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 /*
- ** First Step of the Setup Assitant. Shows three options: Use 1n.pm, use custom server or
+ ** First Step of the Setup Assitant. Shows three options: Use 1t1.nl, use custom server or
  *  keep settings (if != standard of older versions)
  */
 public class SetupStep1Fragment extends Fragment {

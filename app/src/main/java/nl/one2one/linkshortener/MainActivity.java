@@ -1,4 +1,4 @@
-package nl.one2one.lnkshortener;
+package nl.one2one.linkshortener;
 
 // Copyright (C) 2017 Michael Achmann
 
@@ -37,8 +37,8 @@ import java.net.CookieManager;
 import de.cketti.library.changelog.ChangeLog;
 
 public class MainActivity extends AppCompatActivity {
-    public final static String EXTRA_MESSAGE = "nl.one2one.lnkshortener.MESSAGE";
-    public final static String ACTIVITY_MESSAGE = "nl.one2one.lnkshortener.ACTIVITY";
+    public final static String EXTRA_MESSAGE = "nl.one2one.linkshortener.MESSAGE";
+    public final static String ACTIVITY_MESSAGE = "nl.one2one.linkshortener.ACTIVITY";
     String originalUrl;
     String errorMessage;
     private UrlManager urlmanager;
@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.action_bug:
                 // Opens Issuetracker on Github in a Browser
-                String url = "https://github.com/michaelachmann/LnkShortener/issues/";
+                String url = "https://github.com/erikhubers/LnkShortener/issues/";
                 Intent intentBug = new Intent(Intent.ACTION_VIEW);
                 intentBug.setData(Uri.parse(url));
                 startActivity(intentBug);
@@ -219,7 +219,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Opens the GitHub Repo in a Browser
     public void onClickGitHub(View view) {
-        String url = "https://github.com/michaelachmann/LnkShortener/";
+        String url = "https://github.com/erikhubers/LnkShortener/";
         Intent intentGitHub = new Intent(Intent.ACTION_VIEW);
         intentGitHub.setData(Uri.parse(url));
         startActivity(intentGitHub);

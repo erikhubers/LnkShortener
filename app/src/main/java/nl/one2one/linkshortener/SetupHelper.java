@@ -1,4 +1,4 @@
-package nl.one2one.lnkshortener;
+package nl.one2one.linkshortener;
 
 // Copyright (C) 2017 Michael Achmann
 
@@ -42,7 +42,7 @@ import java.util.UUID;
 
 // This Class is a dirty wrapper for Signing App users up automatically an
 // anonymously. If there was an API things would be a lot easier und cleaner.
-// For the moment this Setup will do in order to prevent spam abuse with 1n.pm
+// For the moment this Setup will do in order to prevent spam abuse with 1t1.nl
 
 
 public class SetupHelper {
@@ -163,7 +163,7 @@ public class SetupHelper {
                             @Override
                             public Map<String, String> getHeaders() throws AuthFailureError {
                                 Map<String, String> params = new HashMap<String, String>();
-                                params.put("User-Agent", "LnkShortener App");
+                                params.put("User-Agent", "LinkShortener App");
                                 return params;
                             }
                         };
@@ -173,7 +173,7 @@ public class SetupHelper {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("User-Agent", "LnkShortener App");
+                params.put("User-Agent", "LinkShortener App");
                 return params;
             }
         };
@@ -221,7 +221,7 @@ public class SetupHelper {
                                             @Override
                                             public Map<String, String> getHeaders() throws AuthFailureError {
                                                 Map<String, String> params = new HashMap<String, String>();
-                                                params.put("User-Agent", "LnkShortener App");
+                                                params.put("User-Agent", "LinkShortener App");
                                                 return params;
                                             }
                                         };
@@ -243,7 +243,7 @@ public class SetupHelper {
                             @Override
                             public Map<String, String> getHeaders() throws AuthFailureError {
                                 Map<String, String> params = new HashMap<String, String>();
-                                params.put("User-Agent", "LnkShortener App");
+                                params.put("User-Agent", "LinkShortener App");
                                 return params;
                             }
                         };
@@ -254,7 +254,7 @@ public class SetupHelper {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("User-Agent", "LnkShortener App");
+                params.put("User-Agent", "LinkShortener App");
                 return params;
             }
         };

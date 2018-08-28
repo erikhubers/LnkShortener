@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LnkShortener</string>
+    <string name="app_name">One to One Link Shortener</string>
     <string name="activity_settings">設定</string>
 
     <!-- Strings for MainActivity -->

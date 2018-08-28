@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# LnkShortener documentation build configuration file, created by
+# One to One Link Shortener documentation build configuration file, created by
 # sphinx-quickstart on Mon Jan 30 12:26:56 2017.
 #
 # This file is execfile()d with the current directory set to its
@@ -45,9 +45,9 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'LnkShortener'
-copyright = u'2017, Michael Achmann'
-author = u'Michael Achmann'
+project = u'One to One Link Shortener'
+copyright = u''
+author = u''
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

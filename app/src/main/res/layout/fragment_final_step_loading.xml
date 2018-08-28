@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context="nl.one2one.lnkshortener.nl.one2one.lnkshortener.SetupFinalStepLoading">
+    tools:context="nl.one2one.linkshortener.nl.one2one.linkshortener.SetupFinalStepLoading">
 
     <ScrollView
         android:layout_width="match_parent"

@@ -1,4 +1,4 @@
-package nl.one2one.lnkshortener;
+package nl.one2one.linkshortener;
 
 // Copyright (C) 2017 Michael Achmann
 
@@ -30,7 +30,7 @@ import android.widget.ToggleButton;
 
 
 /**
- * Step 3 in the Setup Assistant. Shows login options for 1n.pm
+ * Step 3 in the Setup Assistant. Shows login options for 1t1.nl
  * The Layout & Fragment Class already include the logic for signing
  * up from within the app. Since this would be quite a dirty
  * wrapper we are awaiting some API-Endpoint for the moment.

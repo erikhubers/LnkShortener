@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:id="@+id/mainFrame"
     android:layout_height="match_parent"
-    tools:context="nl.one2one.lnkshortener.nl.one2one.lnkshortener.MainFragment">
+    tools:context="nl.one2one.linkshortener.nl.one2one.linkshortener.MainFragment">
 
 
     <LinearLayout
@@ -19,7 +19,7 @@
             android:id="@+id/urlInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="http://google.com"
+            android:hint="https://tweakers.net"
             android:inputType="textUri"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"
