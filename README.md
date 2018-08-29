@@ -43,10 +43,12 @@ This generally should work for every polr installation *as long as public sign u
 >You should have received a copy of the GNU General Public License
 >along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#Attribution to original creator
+# Attribution to original creator
+
 >This project is heavily based on the original LnkShortener project. Thanks Michael Achmann for your hard work! Visit the orignal repo here
 >This application uses Open Source components. We acknowledge and are grateful to these developers for their contributions to open source.
 >Visit the orignal [GitHub page](https://github.com/michaelachmann/LnkShortener/").</p>
+
 # Dependencies
 
 * For QRCode support One to One Link Shortener depends on [QRGen](https://github.com/kenglxn/QRGen), which is licensed under Apache 2.0
