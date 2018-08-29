@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
         // Setting up the Toolbar
         Toolbar mainToolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(mainToolbar);
+        mainToolbar.setTitleTextColor(getResources().getColor(R.color.icons));
 
         // Preparing Fragment
         FragmentTransaction transaction = getFragmentManager().beginTransaction();

@@ -27,7 +27,6 @@
         android:layout_height="wrap_content"
         android:text="@string/about_licence"
         android:textAlignment="viewStart"
-        android:textColor="@android:color/black"
         android:textSize="10sp" />
 
     <Space
@@ -41,7 +40,6 @@
         android:layout_height="wrap_content"
         android:text="@string/about_licence_origin"
         android:textAlignment="viewStart"
-        android:textColor="@android:color/black"
         android:textStyle="normal|bold" />
 
     <Space
@@ -55,7 +53,6 @@
         android:layout_height="wrap_content"
         android:text="@string/about_qrgen"
         android:textAlignment="viewStart"
-        android:textColor="@android:color/black"
         android:textStyle="normal|bold" />
 
     <TextView
@@ -64,7 +61,6 @@
         android:layout_height="wrap_content"
         android:text="@string/about_changelog"
         android:textAlignment="viewStart"
-        android:textColor="@android:color/black"
         android:textStyle="normal|bold" />
 
     <TextView
@@ -72,7 +68,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/logo_licence"
-        android:textColor="@android:color/black"
         android:textStyle="normal|bold" />
 
     <Space
@@ -92,8 +87,7 @@
         android:id="@+id/textView15"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/translations_by"
-        android:textColor="@android:color/black" />
+        android:text="@string/translations_by" />
 
     <Space
         android:layout_width="match_parent"
@@ -106,8 +100,7 @@
         android:layout_height="wrap_content"
         android:autoLink="web"
         android:text="@string/source_code"
-        android:textAlignment="textStart"
-        android:textColor="@android:color/black" />
+        android:textAlignment="textStart" />
 
     <GridLayout
         android:layout_width="match_parent"
@@ -121,8 +114,7 @@
             app:srcCompat="@drawable/ic_github_dark"
             android:id="@+id/imageButton"
             android:scaleType="fitCenter"
-            android:onClick="onClickGitHub"
-            android:backgroundTint="@android:color/transparent" />
+            android:onClick="onClickGitHub" />
     </GridLayout>
 
 

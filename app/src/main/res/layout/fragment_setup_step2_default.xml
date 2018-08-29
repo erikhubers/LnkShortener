@@ -2,7 +2,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/SetupPrimary"
     android:padding="15dp"
     tools:context="nl.one2one.linkshortener.SetupStep1Fragment">
 
@@ -32,7 +31,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/setup_onenpm_intro"
-                android:textColor="@android:color/white"
                 android:textSize="16sp" />
 
             <RadioGroup
@@ -47,15 +45,13 @@
                     android:layout_height="wrap_content"
                     android:checked="true"
                     android:text="@string/setup_anonymous"
-                    android:textColor="@android:color/white"
                     android:textStyle="bold" />
 
                 <RadioButton
                     android:id="@+id/radioLogin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/setup_login_signup"
-                    android:textColor="@android:color/white" />
+                    android:text="@string/setup_login_signup" />
 
 
             </RadioGroup>
@@ -67,7 +63,6 @@
                 android:layout_marginTop="55dp"
                 android:text="@string/setup_loading_tos"
                 android:textAlignment="center"
-                android:textColor="@android:color/white"
                 android:textStyle="bold" />
 
             <WebView
@@ -88,7 +83,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="@color/SetupPrimary"
+        android:background="@color/icons"
         android:orientation="vertical"
         android:paddingTop="10dp">
 
@@ -101,7 +96,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/setup_agree_tos"
-            android:textColor="@android:color/white"
             android:textStyle="normal|bold" />
 
 

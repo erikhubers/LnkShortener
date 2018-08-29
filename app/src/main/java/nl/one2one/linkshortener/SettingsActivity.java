@@ -38,6 +38,7 @@ public class SettingsActivity extends AppCompatActivity {
         // Setting up Toolbar
         Toolbar mainToolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(mainToolbar);
+        mainToolbar.setTitleTextColor(getResources().getColor(R.color.icons));
 
         // Get a support ActionBar corresponding to this toolbar
         ActionBar ab = getSupportActionBar();

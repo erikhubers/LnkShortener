@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:id="@+id/mainFrame"
     android:layout_height="match_parent"
-    tools:context="nl.one2one.linkshortener.nl.one2one.linkshortener.MainFragment">
+    tools:context="nl.one2one.linkshortener.MainFragment">
 
 
     <LinearLayout
@@ -22,7 +22,6 @@
             android:hint="https://tweakers.net"
             android:inputType="textUri"
             android:textAlignment="center"
-            android:textColor="@color/colorPrimary"
             android:textSize="24sp"
             android:textStyle="normal|bold" />
 
@@ -44,7 +43,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textViewError"
-                android:textColor="@android:color/holo_red_dark"
                 android:textStyle="normal|bold"
                 android:textSize="16sp"
                 android:visibility="invisible"

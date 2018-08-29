@@ -2,9 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/SetupPrimary"
     android:padding="15dp"
-    tools:context="nl.one2one.linkshortener.nl.one2one.linkshortener.SetupStep1Fragment">
+    tools:context="nl.one2one.linkshortener.SetupStep1Fragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -23,7 +22,6 @@
                 android:layout_marginTop="15dp"
                 android:text="@string/setup_introduction"
                 android:textAlignment="textStart"
-                android:textColor="@android:color/white"
                 android:textSize="16sp" />
 
             <TextView
@@ -49,7 +47,6 @@
                     android:layout_weight="1"
                     android:checked="true"
                     android:text="@string/setup_1npm"
-                    android:textColor="@android:color/white"
                     android:textStyle="bold" />
 
                 <RadioButton
@@ -57,16 +54,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/setup_custom_server"
-                    android:textColor="@android:color/white" />
+                    android:text="@string/setup_custom_server" />
 
                 <RadioButton
                     android:id="@+id/keepRadio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:enabled="false"
-                    android:text="@string/setup_keep_settings"
-                    android:textColor="@android:color/white" />
+                    android:text="@string/setup_keep_settings" />
             </RadioGroup>
 
 
@@ -78,7 +73,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="@color/SetupPrimary"
         android:orientation="vertical"
         android:paddingTop="10dp">
 

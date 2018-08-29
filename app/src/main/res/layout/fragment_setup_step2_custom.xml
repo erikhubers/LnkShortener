@@ -2,9 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/SetupPrimary"
     android:padding="15dp"
-    tools:context="nl.one2one.linkshortener.nl.one2one.linkshortener.SetupStep1Fragment">
+    tools:context="nl.one2one.linkshortener.SetupStep1Fragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -31,8 +30,7 @@
                 android:id="@+id/textView11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/setup_custom_domain"
-                android:textColor="@android:color/white" />
+                android:text="@string/setup_custom_domain" />
 
             <EditText
                 android:id="@+id/urlEditText"
@@ -40,15 +38,13 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="https://1t1.nl"
-                android:inputType="textUri"
-                android:textColor="@android:color/white" />
+                android:inputType="textUri" />
 
             <TextView
                 android:id="@+id/textView12"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/setup_api_key"
-                android:textColor="@android:color/white" />
+                android:text="@string/setup_api_key" />
 
             <EditText
                 android:id="@+id/apiEditText"
@@ -56,8 +52,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="8a4a2c54d582048c31aa85baaeb3f8"
-                android:inputType="text"
-                android:textColor="@android:color/white" />
+                android:inputType="text" />
 
 
         </LinearLayout>
@@ -67,7 +62,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="@color/SetupPrimary"
         android:orientation="horizontal"
         android:paddingTop="10dp">
 

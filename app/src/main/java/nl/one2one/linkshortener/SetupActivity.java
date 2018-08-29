@@ -23,6 +23,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
@@ -305,6 +306,11 @@ public class SetupActivity extends AppCompatActivity {
         // Finally MainFragment is added to the main container
         transaction.replace(R.id.fragment_container, setupStep1Fragment);
         transaction.commit();
+
+        Toolbar mainToolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        setSupportActionBar(mainToolbar);
+        mainToolbar.setTitle(R.string.setup1_title);
+        mainToolbar.setTitleTextColor(getResources().getColor(R.color.icons));
 
     }
 

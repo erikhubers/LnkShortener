@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
     tools:context="nl.one2one.linkshortener.nl.one2one.linkshortener.SetupFinalStepLoading">
 
     <ScrollView
@@ -39,7 +38,6 @@
                 android:gravity="center"
                 android:text="@string/setup_create_anonymous_account"
                 android:textAlignment="center"
-                android:textColor="@color/SetupSecondaryTitle"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -93,7 +91,6 @@
         android:layout_width="match_parent"
         android:layout_gravity="bottom"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
         android:paddingTop="15dp">
 
 

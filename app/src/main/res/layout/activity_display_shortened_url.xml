@@ -13,9 +13,7 @@
         android:id="@+id/main_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:titleTextColor="@android:color/white"
         android:elevation="4dp"
-        android:background="@color/SetupPrimary"
         android:theme="@style/Theme.AppCompat.Light"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
@@ -40,7 +38,6 @@
                 android:visibility="gone"
                 android:text="@string/you_need_to_run_setup"
                 android:textAlignment="center"
-                android:textColor="@color/colorAccent"
                 android:textStyle="bold" />
 
             <TextView
@@ -87,7 +84,6 @@
                 android:scrollbars="vertical"
                 android:text="1t1.nl/"
                 android:textAlignment="center"
-                android:textColor="@color/colorPrimary"
                 android:textIsSelectable="true"
                 android:textSize="32sp"
                 android:textStyle="normal|bold"
@@ -104,7 +100,6 @@
                 android:singleLine="true"
                 android:text="Name"
                 android:textAlignment="textStart"
-                android:textColor="@color/colorPrimary"
                 android:textSize="32sp"
                 android:textStyle="bold"
                 android:visibility="gone" />
@@ -121,7 +116,6 @@
                     android:layout_height="80dp"
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
-                    android:background="@android:color/transparent"
                     android:onClick="shareLink"
                     android:padding="5dp"
                     android:scaleType="fitCenter"
@@ -138,7 +132,6 @@
                     android:layout_marginLeft="23dp"
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
-                    android:background="@android:color/transparent"
                     android:onClick="openLink"
 
                     android:padding="5dp"
@@ -155,7 +148,6 @@
                     android:layout_marginLeft="23dp"
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
-                    android:background="@android:color/transparent"
                     android:onClick="copyLink"
                     android:padding="5dp"
 
@@ -172,7 +164,6 @@
                     android:layout_marginLeft="23dp"
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
-                    android:background="@android:color/transparent"
                     android:onClick="showQRCode"
                     android:padding="5dp"
 
