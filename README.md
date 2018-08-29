@@ -4,7 +4,7 @@ One to One Link Shortener is an Android app for shortening URLs. It is using [Po
 
 **[Getting Started](#getting-started) | [App Stores](#app-stores) | [Contribute](#contribute) | [Website](https://1t1.nl)**
 
-<img style="float:right; height:500px" height="500" align="right" src="/metadata/images/ScreenshotFramedEnglish.png" >
+<img style="float:right; height:500px" height="500" align="right" src="https://lh3.googleusercontent.com/fpfLVa55xjRwCZ84EcucJ6VnoTmUyA29hKnuTjiy0DujPmAMaAYoSGwnmWDkGX3hEA=w1920-h911" >
 
 # Getting Started
 You can download One to One Link Shortener from one of the following App Stores or obtain the latest binaries from the [Releases](https://github.com/erikhubers/LnkShortener/releases) page.
