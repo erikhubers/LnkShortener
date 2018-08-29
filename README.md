@@ -12,7 +12,7 @@ You can download One to One Link Shortener from one of the following App Stores 
 ## App Stores
 
 <div style="height: 100px; vertical-align: middle; width: 260px; margin: 0; margin-left: auto; margin-right: auto;">
-<a href='https://1t1.nl/lnk_google'> <img style="vertical-align: middle;" alt='Get it on Google Play' height='100' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a>
+<a href='https://1t1.nl/android'> <img style="vertical-align: middle;" alt='Get it on Google Play' height='100' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a>
 <br />
 <a href='https://1t1.nl/lnk_download'><img style="vertical-align: middle;" height="66" alt='Download directly' src=''></a>
 </div>
