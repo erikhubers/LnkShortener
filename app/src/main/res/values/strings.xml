@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">One to One Link Shortener</string>
+    <string name="app_name">One to One</string>
 
     <!-- String for Menu in MainActivity -->
     <string name="action_bug">Report a Bug</string>

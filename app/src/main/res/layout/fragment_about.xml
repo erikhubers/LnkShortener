@@ -114,7 +114,8 @@
             app:srcCompat="@drawable/ic_github_dark"
             android:id="@+id/imageButton"
             android:scaleType="fitCenter"
-            android:onClick="onClickGitHub" />
+            android:onClick="onClickGitHub"
+            android:background="@color/hidden_icons" />
     </GridLayout>
 
 

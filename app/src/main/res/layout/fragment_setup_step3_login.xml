@@ -133,7 +133,7 @@
 
         <Button
             android:id="@+id/loginButton"
-            style="@style/Widget.AppCompat.Button.Colored"
+            style="@style/Widget.One2One.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

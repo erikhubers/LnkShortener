@@ -103,7 +103,7 @@
 
             <Button
                 android:id="@+id/finishButton"
-                style="@style/Widget.AppCompat.Button.Colored"
+                style="@style/Widget.One2One.Button.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"

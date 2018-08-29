@@ -15,6 +15,8 @@
         <item name="android:background">@color/primary</item>
     </style>
 
+    <style name="Widget.One2One.Button.Colored" parent="Widget.AppCompat.Button.Colored"></style>
+
     <style name="RobotoTextViewStyle" parent="android:Widget.TextView">
         <item name="android:fontFamily">sans-serif-light</item>
     </style>
