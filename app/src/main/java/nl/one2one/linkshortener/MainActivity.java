@@ -15,7 +15,9 @@ package nl.one2one.linkshortener;
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import android.app.AlertDialog;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -27,6 +29,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -106,7 +109,24 @@ public class MainActivity extends AppCompatActivity {
         transaction.commit();
 
         // Show the Changelog if a new Version is installed
-        ChangeLog cl = new ChangeLog(this);
+        ChangeLog cl = new CustomChangeLog(this);
+
+        AlertDialog dialog = cl.getLogDialog();
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(final DialogInterface dialog) {
+                Button negativeButton = ((AlertDialog)dialog).getButton(DialogInterface.BUTTON_NEGATIVE);
+                Button positiveButton = ((AlertDialog)dialog).getButton(DialogInterface.BUTTON_POSITIVE);
+
+                // this not working because multiplying white background (e.g. Holo Light) has no effect
+                //negativeButton.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
+
+
+                negativeButton.invalidate();
+                positiveButton.invalidate();
+            }
+        });
+
         if (cl.isFirstRun()) {
             cl.getLogDialog().show();
         }

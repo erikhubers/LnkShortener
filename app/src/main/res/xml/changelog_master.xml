@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog>
-    <realease version="1.0" versioncode="1">
+    <release
+        version="1.0"
+        versioncode="1">
         <change>First release</change>
-    </realease>
+    </release>
+    <release
+        version="1.1.0"
+        versioncode="2">
+        <change>Fixed crashes on Android 9.0</change>
+    </release>
+    <release
+        version="1.1.1"
+        versioncode="3">
+        <change>Fixed changelog dialog button visibility</change>
+    </release>
 </changelog>
